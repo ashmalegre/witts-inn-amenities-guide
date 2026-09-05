@@ -1,0 +1,234 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Witt's Inn by the Sea — Amenities Guide</title>
+<style>
+:root{
+  --ink:#18324a;
+  --muted:#687b8c;
+  --blue:#dcecf5;
+  --blue-2:#edf6fb;
+  --line:#c9dce7;
+  --white:#ffffff;
+  --deep:#254e6c;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:#f7fbfd;color:var(--ink);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif;line-height:1.55}
+.page{max-width:760px;margin:0 auto;background:var(--white);min-height:100vh}
+.hero{padding:42px 24px 28px;text-align:center;background:linear-gradient(180deg,#edf7fc 0%,#fff 100%);border-bottom:1px solid var(--line)}
+.kicker{font-size:12px;letter-spacing:.22em;text-transform:uppercase;color:var(--muted);font-weight:700}
+h1,h2,h3{font-family:Georgia,"Times New Roman",serif;font-weight:400;margin:0;color:var(--deep)}
+h1{font-size:35px;line-height:1.06;margin-top:10px}
+.rule{width:54px;height:1px;background:#91b7ca;margin:18px auto 0}
+.hero p{margin:15px auto 0;max-width:500px;color:var(--muted);font-size:15px}
+.nav{display:grid;grid-template-columns:1fr 1fr;gap:10px;padding:16px 20px;border-bottom:1px solid var(--line);position:sticky;top:0;background:rgba(255,255,255,.96);backdrop-filter:blur(8px);z-index:10}
+.nav a{text-decoration:none;color:var(--deep);border:1px solid var(--line);border-radius:999px;text-align:center;padding:10px 12px;font-weight:700;font-size:14px;background:#fff}
+.section{padding:34px 22px;border-bottom:1px solid var(--line)}
+.section-head{text-align:center;margin-bottom:24px}
+.section-head .eyebrow{font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--muted);font-weight:700;margin-bottom:7px}
+.section-head h2{font-size:30px}
+.section-head p{margin:8px auto 0;max-width:520px;color:var(--muted);font-size:15px}
+.wifi{display:grid;grid-template-columns:1fr 1fr;background:var(--blue-2);border:1px solid var(--line);border-radius:16px;margin-bottom:18px;overflow:hidden}
+.wifi button{appearance:none;-webkit-appearance:none;border:0;background:transparent;padding:14px 12px;text-align:center;min-width:0;color:inherit;font:inherit;cursor:pointer}
+.wifi button+button{border-left:1px solid var(--line)}
+.wifi button:focus-visible{outline:2px solid var(--deep);outline-offset:-3px}
+.wifi span{display:block;font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);font-weight:800}
+.wifi strong{display:block;margin-top:4px;font-size:16px;color:var(--ink);overflow-wrap:anywhere}
+.wifi-hint{text-align:center;margin:-8px 0 18px;color:var(--muted);font-size:11px}
+.copy-toast{position:fixed;left:50%;bottom:22px;transform:translateX(-50%);background:var(--deep);color:#fff;padding:9px 13px;border-radius:999px;font-size:12px;font-weight:700;opacity:0;pointer-events:none;transition:opacity .18s ease;z-index:30;white-space:nowrap}
+.copy-toast.show{opacity:1}
+.card{border:1px solid var(--line);border-radius:18px;overflow:hidden;margin-top:14px;background:#fff}
+.card-title{display:flex;align-items:center;background:var(--blue-2);padding:14px 18px;border-bottom:1px solid var(--line)}
+.card-title h3{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif;font-weight:750;font-size:16px;color:var(--ink)}
+.card-body{padding:16px 18px}
+.steps{list-style:none;margin:0;padding:0;counter-reset:guide-step}
+.steps li{position:relative;padding:0 0 12px 36px;min-height:28px}
+.steps li:last-child{padding-bottom:0}
+.steps li::before{counter-increment:guide-step;content:counter(guide-step);position:absolute;left:0;top:0;width:23px;height:23px;border-radius:50%;display:grid;place-items:center;background:var(--blue-2);border:1px solid var(--line);font-size:10px;font-weight:800;color:var(--deep)}
+.steps li+li{margin-top:7px}
+.detail-list{list-style:none;margin:0;padding:0}
+.detail-list li{padding:0 0 11px 0}
+.detail-list li:last-child{padding-bottom:0}
+.detail-list li+li{margin-top:6px}
+.note{margin-top:14px;padding:12px 14px;border-left:3px solid #9dbfd0;background:#f8fbfd;color:#536878;border-radius:0 10px 10px 0;font-size:13px}
+.app-row{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:14px 0 4px}
+.app-btn{display:flex;align-items:center;justify-content:center;min-height:48px;text-decoration:none;border-radius:12px;font-weight:800;font-size:14px;border:1px solid #2a4f67;color:#fff;background:#2a4f67;padding:10px 12px}
+.app-btn.secondary{background:#fff;color:#2a4f67}
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-bottom:18px}
+.stat{text-align:center;border:1px solid var(--line);background:var(--blue-2);border-radius:14px;padding:12px 6px}
+.stat strong{display:block;font-family:Georgia,"Times New Roman",serif;font-size:23px;font-weight:400;color:var(--deep)}
+.stat span{display:block;margin-top:2px;font-size:9px;letter-spacing:.11em;text-transform:uppercase;color:var(--muted);font-weight:800}
+.quick-note{background:var(--blue);border-radius:16px;padding:16px 17px;margin-top:15px}
+.quick-note strong{font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--deep)}
+.quick-note p{margin:5px 0 0;color:#4d6575;font-size:14px}
+.footer{text-align:center;padding:28px 22px 40px;color:var(--muted);font-size:12px}
+@media(max-width:430px){
+  h1{font-size:31px}.section-head h2{font-size:27px}.hero{padding-top:34px}
+  .section{padding-left:17px;padding-right:17px}.nav{padding-left:14px;padding-right:14px}
+  .app-row{grid-template-columns:1fr}.stats{gap:6px}.stat strong{font-size:21px}
+}
+@media print{.nav{display:none}.page{max-width:none}.section{break-inside:avoid}}
+</style>
+</head>
+<body>
+<div class="page">
+  <header class="hero">
+    <div class="kicker">Amenities Guide</div>
+    <h1>Witt's Inn by the Sea</h1>
+    <div class="rule"></div>
+    <p>Music, Outdoor Audio &amp; Spa</p>
+  </header>
+
+  <nav class="nav" aria-label="Guide sections">
+    <a href="#audio">Music & Audio</a>
+    <a href="#pool">Pool & Spa</a>
+  </nav>
+
+  <section class="section" id="audio">
+    <div class="section-head">
+      <div class="eyebrow">Music & Outdoor Audio</div>
+      <h2>Connect & Play</h2>
+      <p>Connect once, then choose how you’d like to listen.</p>
+    </div>
+
+    <div class="wifi" aria-label="Wi-Fi details">
+      <button type="button" class="copy-field" data-copy="Witt's End" data-label="Wi-Fi network"><span>Wi‑Fi Network</span><strong>Witt's End</strong></button>
+      <button type="button" class="copy-field" data-copy="Bythesea" data-label="Wi-Fi password"><span>Password</span><strong>Bythesea</strong></button>
+    </div>
+    <div class="wifi-hint">Tap either field to copy.</div>
+
+    <article class="card">
+      <div class="card-title"><h3>Play Music with Sonos</h3></div>
+      <div class="card-body">
+        <ol class="steps">
+          <li>Connect your phone to the house Wi‑Fi above.</li>
+          <li>Download or open the Sonos app. Sign in or create an account only if prompted.</li>
+          <li>The app should detect the available speakers. If you see an <strong>Add</strong> prompt and the speaker is <strong>flashing green</strong>, tap <strong>Add</strong> and follow the on-screen prompts.</li>
+          <li><strong>Pick the room</strong> you want to use.</li>
+          <li>Select your music and press play.</li>
+        </ol>
+        <div class="app-row">
+          <a class="app-btn" href="https://apps.apple.com/us/app/sonos/id1488977981" target="_blank" rel="noopener">iOS · App Store</a>
+          <a class="app-btn secondary" href="https://play.google.com/store/apps/details?id=com.sonos.acr2&amp;hl=en_US" target="_blank" rel="noopener">Android · Google Play</a>
+        </div>
+      </div>
+    </article>
+
+    <article class="card">
+      <div class="card-title"><h3>Using AirPlay on iPhone / iPad</h3></div>
+      <div class="card-body">
+        <ol class="steps">
+          <li>Make sure your device is connected to Witt’s Inn Wi‑Fi.</li>
+          <li>Open Control Center and tap the AirPlay / audio-output icon.</li>
+          <li>Select the available Sonos speaker, then press play.</li>
+        </ol>
+      </div>
+    </article>
+
+    <article class="card">
+      <div class="card-title"><h3>Outdoor TV Audio</h3></div>
+      <div class="card-body">
+        <ol class="steps">
+          <li>Turn on the outdoor TV.</li>
+          <li>Open the TV’s Sound / Audio settings and select the connected speakers as the audio output.</li>
+        </ol>
+        <div class="note">Please do not reset or reconfigure the speakers.</div>
+      </div>
+    </article>
+  </section>
+
+  <section class="section" id="pool">
+    <div class="section-head">
+      <div class="eyebrow">Pool & Spa</div>
+      <h2>Using the Pool &amp; Spa</h2>
+      <p>Witt’s Inn uses a Hayward pool &amp; spa system. The spa is preset to 99°F and programmed for an approximately one-hour cycle.</p>
+    </div>
+
+    <div class="stats">
+      <div class="stat"><strong>99°F</strong><span>Spa temp</span></div>
+      <div class="stat"><strong>~15 min</strong><span>Warm-up</span></div>
+      <div class="stat"><strong>1 hour</strong><span>Heat cycle</span></div>
+    </div>
+
+    <article class="card">
+      <div class="card-title"><h3>To Heat the Spa</h3></div>
+      <div class="card-body">
+        <ol class="steps">
+          <li>On the <strong>Hayward pool / spa control</strong>, select <strong>Spa</strong>.</li>
+          <li>The spa is preset to <strong>99°F</strong> — no temperature adjustment is needed.</li>
+          <li>Allow about <strong>15 minutes</strong> for the spa to warm.</li>
+          <li>Once the cycle starts, leave the other pool / spa mode settings as they are.</li>
+        </ol>
+      </div>
+    </article>
+
+    <article class="card">
+      <div class="card-title"><h3>Jets &amp; Water Features</h3></div>
+      <div class="card-body">
+        <ol class="steps">
+          <li>The spa’s blower and jets typically activate automatically as the spa heats.</li>
+          <li>Separate controls are also available to turn the blower or jets on manually, if desired.</li>
+        </ol>
+      </div>
+    </article>
+
+    <article class="card">
+      <div class="card-title"><h3>After One Hour</h3></div>
+      <div class="card-body">
+        <ol class="steps">
+          <li>The spa heating cycle ends automatically after approximately <strong>one hour</strong>.</li>
+          <li>The system then returns to <strong>Pool / Spillover</strong> mode, allowing warm spa water to flow into the pool.</li>
+          <li>The pool may feel warmer afterward — this is expected.</li>
+        </ol>
+      </div>
+    </article>
+
+    <div class="quick-note">
+      <strong>A quick note</strong>
+      <p>Please leave the system settings as programmed and avoid repeatedly switching between Pool and Spa modes.</p>
+    </div>
+  </section>
+
+  <footer class="footer">Witt's Inn by the Sea · Amenities Guide</footer>
+</div>
+
+  <div class="copy-toast" id="copyToast" role="status" aria-live="polite"></div>
+<script>
+(function(){
+  const toast=document.getElementById('copyToast');
+  let timer;
+  async function copyText(value){
+    if(navigator.clipboard && window.isSecureContext){
+      await navigator.clipboard.writeText(value);
+      return;
+    }
+    const ta=document.createElement('textarea');
+    ta.value=value;
+    ta.setAttribute('readonly','');
+    ta.style.position='absolute';
+    ta.style.left='-9999px';
+    document.body.appendChild(ta);
+    ta.select();
+    document.execCommand('copy');
+    ta.remove();
+  }
+  document.querySelectorAll('.copy-field').forEach(btn=>{
+    btn.addEventListener('click', async ()=>{
+      try{
+        await copyText(btn.dataset.copy);
+        toast.textContent=btn.dataset.label+' copied';
+      }catch(e){
+        toast.textContent='Press and hold to copy';
+      }
+      toast.classList.add('show');
+      clearTimeout(timer);
+      timer=setTimeout(()=>toast.classList.remove('show'),1600);
+    });
+  });
+})();
+</script>
+</body>
+</html>
